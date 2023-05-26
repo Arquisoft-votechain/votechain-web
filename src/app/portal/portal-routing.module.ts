@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, ExtraOptions, Routes } from '@angular/router';
 
 const routes: Routes = [
+  
   {
     path: '**',
     redirectTo: ''
-  }
+    
+  },
+  
 
 ];
 

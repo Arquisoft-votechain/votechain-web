@@ -1,0 +1,64 @@
+<h2>Agregar Estudiante</h2>
+
+<form (ngSubmit)="addStudent()" class="form">
+  <div class="form-group">
+    <label>Nombres:</label>
+    <input type="text" [(ngModel)]="newStudent.nombres" name="nombres" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Apellidos:</label>
+    <input type="text" [(ngModel)]="newStudent.apellidos" name="apellidos" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Fecha de Nacimiento:</label>
+    <input type="date" [(ngModel)]="newStudent.fechaNacimiento" name="fechaNacimiento" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Número de Documento:</label>
+    <input type="text" [(ngModel)]="newStudent.numeroDocumento" name="numeroDocumento" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Colegio:</label>
+    <input type="text" [(ngModel)]="newStudent.colegio" name="colegio" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Grado:</label>
+    <input type="number" [(ngModel)]="newStudent.grado" name="grado" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Sección:</label>
+    <input type="text" [(ngModel)]="newStudent.seccion" name="seccion" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+
+<h2>Listado de Estudiantes</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Número de Documento</th>
+      <th>Colegio</th>
+      <th>Grado</th>
+      <th>Sección</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students; let i = index">
+      <td>{{ student.nombres }}</td>
+      <td>{{ student.apellidos }}</td>
+      <td>{{ student.fechaNacimiento }}</td>
+      <td>{{ student.numeroDocumento }}</td>
+      <td>{{ student.colegio }}</td>
+      <td>{{ student.grado }}</td>
+      <td>{{ student.seccion }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
