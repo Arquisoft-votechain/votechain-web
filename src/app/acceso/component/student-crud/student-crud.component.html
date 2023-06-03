@@ -1,64 +1,86 @@
-<h2>Agregar Estudiante</h2>
+<div class="container">
+  <div class="card">
+    <h2>Agregar Estudiante</h2>
 
-<form (ngSubmit)="addStudent()" class="form">
-  <div class="form-group">
-    <label>Nombres:</label>
-    <input type="text" [(ngModel)]="newStudent.nombres" name="nombres" class="form-control" required>
+    <form (ngSubmit)="addStudent()" class="form">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-icon">
+            <i class="fas fa-user"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.nombres" name="nombres" class="form-control" placeholder="Nombres" required>
+          <span class="input-group-icon">
+            <i class="fas fa-user"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.apellidos" name="apellidos" class="form-control" placeholder="Apellidos" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-tooltip" data-tooltip="Fecha de Nacimiento">
+            <i class="fas fa-info-circle"></i>
+          </span>
+          <input type="date" [(ngModel)]="newStudent.fechaNacimiento" name="fechaNacimiento" class="form-control" required>
+          <span class="input-group-tooltip">
+            <i class="fas fa-info-circle"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.numeroDocumento" name="numeroDocumento" class="form-control" placeholder="Número de Documento" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-icon">
+            <i class="fas fa-school"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.colegio" name="colegio" class="form-control" placeholder="Colegio" required>
+          <span class="input-group-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <input type="number" [(ngModel)]="newStudent.grado" name="grado" class="form-control" placeholder="Grado" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-icon">
+            <i class="fas fa-users"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.seccion" name="seccion" class="form-control" placeholder="Sección" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label>Apellidos:</label>
-    <input type="text" [(ngModel)]="newStudent.apellidos" name="apellidos" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label>Fecha de Nacimiento:</label>
-    <input type="date" [(ngModel)]="newStudent.fechaNacimiento" name="fechaNacimiento" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label>Número de Documento:</label>
-    <input type="text" [(ngModel)]="newStudent.numeroDocumento" name="numeroDocumento" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label>Colegio:</label>
-    <input type="text" [(ngModel)]="newStudent.colegio" name="colegio" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label>Grado:</label>
-    <input type="number" [(ngModel)]="newStudent.grado" name="grado" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label>Sección:</label>
-    <input type="text" [(ngModel)]="newStudent.seccion" name="seccion" class="form-control" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Agregar</button>
-</form>
 
-<h2>Listado de Estudiantes</h2>
+  <div class="card list-card">
+    <h2>Listado de Estudiantes</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nombres</th>
-      <th>Apellidos</th>
-      <th>Fecha de Nacimiento</th>
-      <th>Número de Documento</th>
-      <th>Colegio</th>
-      <th>Grado</th>
-      <th>Sección</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students; let i = index">
-      <td>{{ student.nombres }}</td>
-      <td>{{ student.apellidos }}</td>
-      <td>{{ student.fechaNacimiento }}</td>
-      <td>{{ student.numeroDocumento }}</td>
-      <td>{{ student.colegio }}</td>
-      <td>{{ student.grado }}</td>
-      <td>{{ student.seccion }}</td>
-      <td>
-        <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Número de Documento</th>
+          <th>Colegio</th>
+          <th>Grado</th>
+          <th>Sección</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students; let i = index">
+          <td>{{ student.nombres }}</td>
+          <td>{{ student.apellidos }}</td>
+          <td>{{ student.fechaNacimiento }}</td>
+          <td>{{ student.numeroDocumento }}</td>
+          <td>{{ student.colegio }}</td>
+          <td>{{ student.grado }}</td>
+          <td>{{ student.seccion }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

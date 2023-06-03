@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-student-crud',
   templateUrl: './student-crud.component.html',
-  styleUrls: ['./student-crud.component.css']
+  styleUrls: ['./student-crud.component.scss']
 })
 export class StudentCRUDComponent implements OnInit {
   students: any[] = [];

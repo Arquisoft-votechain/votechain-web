@@ -1,18 +1,31 @@
-<div class="container">
-    <h2>Crear/Editar Partido Político Escolar</h2>
-  
-    <form (ngSubmit)="saveParty()">
-      <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input type="text" class="form-control" id="name" [(ngModel)]="party.name" name="name" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Descripción:</label>
-        <textarea class="form-control" id="description" [(ngModel)]="party.description" name="description" required></textarea>
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
-  </div>
-  
+<div>
+  <h3>Nuevo Partido Político</h3>
+  <form (submit)="saveParty()">
+    <div class="form-group">
+      <label for="partyName">Nombre del partido:</label>
+      <input type="text" class="form-control" id="partyName" [(ngModel)]="party.name" name="partyName" required>
+    </div>
+    <div class="form-group">
+      <label for="partyDescription">Descripción:</label>
+      <textarea class="form-control" id="partyDescription" [(ngModel)]="party.description" name="partyDescription" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="memberName">Nombre del miembro:</label>
+      <input type="text" class="form-control" id="memberName" [(ngModel)]="memberName" name="memberName" required>
+    </div>
+    <div class="form-group">
+      <label for="memberDNI">DNI del miembro:</label>
+      <input type="text" class="form-control" id="memberDNI" [(ngModel)]="memberDNI" name="memberDNI" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+  </form>
+</div>
+
+<hr>
+
+<div>
+  <h3>Miembros del Partido</h3>
+  <ul>
+    <li *ngFor="let member of party.members">{{ member.name }} (DNI: {{ member.dni }}) <button class="btn btn-danger" (click)="deleteMember(member)">Eliminar</button></li>
+  </ul>
+</div>

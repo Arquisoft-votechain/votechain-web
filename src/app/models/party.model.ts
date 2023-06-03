@@ -1,10 +1,8 @@
 export class Party {
-    name: string;
-    description: string;
-  
-    constructor(name: string, description: string) {
-      this.name = name;
-      this.description = description;
-    }
-  }
-  
+  constructor(
+    public name: string,
+    public description: string,
+    public members: { name: string, dni: string }[],
+    public positions: string[]
+  ) {}
+}

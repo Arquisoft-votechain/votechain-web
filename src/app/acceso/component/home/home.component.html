@@ -1,32 +1,37 @@
-<div class="container">
-    <h2 class="text-center">Bienvenido a VoteChain</h2>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Gestión de Procesos Electorales</h5>
-            <p class="card-text">Administra los procesos electorales.</p>
-            <a routerLink="/electoral-process" class="btn btn-primary">Ir a Procesos Electorales</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Gestión de Estudiantes</h5>
-            <p class="card-text">Administra Estudiantes.</p>
-            <a routerLink="/student" class="btn btn-primary">Ir a Gestion estudiantes</a>
-          </div>
-        </div>
-      <div class="col-sm-6">
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Gestión de Partidos Políticos</h5>
-            <p class="card-text">Administra los partidos políticos.</p>
-            <a routerLink="/political-party" class="btn btn-primary">Ir a Partidos Políticos</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+<!-- topnavbar -->
+<div class="topnav shadow p-1">
+  <span class="menu" (click)="openNav()"><i class="bi bi-list"></i></span>
+  <a>Admin VotechainWeb</a>
+</div>
+<!-- topnavbar -->
+
+<!-- left sidebar nav  -->
+<div class="sidebar shadow p-2" [ngStyle]="responsiveMenu">
+  <ul>
+    <li><a routerLink=""><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+    <li><a routerLink="/student"><i class="bi bi-card-text"></i> Estadisticas</a></li>
+    <li>
+      <a (click)="toggleDropdown($event)"><i class="bi bi-bag"></i> VoteChain <i class="bi bi-arrow-right icon"></i></a>
+      <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen}">
+        <li><a routerLink="/electoral-process">Proceso Electoral</a></li>
+        <li><a routerLink="/politic-party">Partido Politico</a></li>
+      </ul>
+    </li>
+    <li>
+      <a (click)="toggleDropdown($event)"><i class="bi bi-tag"></i> Categories <i class="bi bi-arrow-right icon"></i></a>
+      <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen}">
+        <li><a href="#">Link1</a></li>
+        <li><a href="#">Link2</a></li>
+      </ul>
+    </li>
+    <li><a routerLink="/student"><i class="bi bi-person-gear"></i>Estudiantes</a></li>
+    <li><a href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+  </ul>
+</div>
+<!-- left sidebar nav  -->
+
+<!-- main content  -->
+<div class="main-content" [ngStyle]="responsiveContent">
+  <router-outlet></router-outlet>
+</div>
+<!-- main content  -->
