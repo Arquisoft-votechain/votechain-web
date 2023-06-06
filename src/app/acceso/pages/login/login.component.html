@@ -6,13 +6,13 @@
         <img class="logo-home img-fluid" src="../../../../assets/images/votechain_logo_home.png" alt="votechain_logo_home" />
       </div>
       <div class="col-md-6 col-sm-12 h-100 d-sm-flex flex-column bd-highlight justify-content-center">
-        <form class="m-5 p-sm-5">
+        <form class="m-5 p-sm-5"  (ngSubmit)="onSubmit()">
           <h1 class="mb-5"><strong>Iniciar sesión</strong></h1>
           
           <label for="password" class="form-label"><strong>Usuario</strong></label>
           <div class="input-group input-group-lg mb-4">
             <span class="input-group-text" id="inputGroup-sizing-lg"><i-feather name="user"></i-feather></span>
-            <input type="password" class="form-control" aria-label="usuario" placeholder="example@gmail.com" aria-describedby="inputGroup-sizing-lg">
+            <input type="text" class="form-control" aria-label="usuario" placeholder="example@gmail.com" aria-describedby="inputGroup-sizing-lg">
           </div>
 
           <label for="password" class="form-label"><strong>Contraseña</strong></label>

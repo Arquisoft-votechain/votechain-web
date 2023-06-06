@@ -1,0 +1,31 @@
+<!-- topnavbar -->
+<div class="topnav shadow p-1">
+  <span class="menu" (click)="openNav()"><i class="bi bi-list"></i></span>
+  <a>Admin VotechainWeb</a>
+</div>
+<!-- topnavbar -->
+
+<!-- left sidebar nav  -->
+<div class="sidebar shadow p-2" [ngStyle]="responsiveMenu">
+    <ul>
+      <li><a routerLink=""><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+      <li><a routerLink="/portal/student"><i class="bi bi-card-text"></i> Estadisticas</a></li>
+      <li>
+        <a (click)="toggleDropdown($event)"><i class="bi bi-bag"></i> VoteChain <i class="bi bi-arrow-right icon"></i></a>
+        <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen}">
+          <li><a routerLink="/portal/electoral-process">Proceso Electoral</a></li>
+          <li><a routerLink="/portal/politic-party">Partido Politico</a></li>
+        </ul>
+      </li>
+      <li>
+        <a (click)="toggleDropdown($event)"><i class="bi bi-tag"></i> Categories <i class="bi bi-arrow-right icon"></i></a>
+        <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen}">
+          <li><a href="#">Link1</a></li>
+          <li><a href="#">Link2</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/portal/student"><i class="bi bi-person-gear"></i>Estudiantes</a></li>
+      <li><a href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+    </ul>
+  </div>
+  <!-- left sidebar nav  -->
