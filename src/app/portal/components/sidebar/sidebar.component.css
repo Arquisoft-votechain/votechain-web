@@ -26,6 +26,8 @@
     cursor: pointer;
     color: #000;
     display: none;
+    z-index: 999;
+    
 }
 /* topnav css  */
 
@@ -40,7 +42,8 @@
     border-right: 1px solid rgb(128, 128, 128);
     padding: 30px 5px;
     margin: 0px;
-    width: 200px;
+    width: 350px;
+    z-index: 999;
 }
 
 .sidebar a {
