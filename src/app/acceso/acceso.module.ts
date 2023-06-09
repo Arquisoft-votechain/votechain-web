@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { StudentCRUDComponent } from './component/student-crud/student-crud.component';
 import { ElectoralProcessCRUDComponent } from './component/electoral-process-crud/electoral-process-crud.component';
 import { HomeComponent } from './component/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SchoolService } from '../services/school.services';
+
 
 
 @NgModule({
@@ -27,8 +30,12 @@ import { HomeComponent } from './component/home/home.component';
     CommonModule,
     AccesoRoutingModule,
     IconsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
    
+  ],
+  providers:[
+    SchoolService
   ]
 })
 export class AccesoModule { }
