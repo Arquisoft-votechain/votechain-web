@@ -3,88 +3,103 @@
     <h2>Agregar Estudiante</h2>
 
     <form (ngSubmit)="addStudent()" class="form">
+
+
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-icon">
             <i class="fas fa-user"></i>
           </span>
-          <input type="text" [(ngModel)]="newStudent.nombres" name="nombres" class="form-control" placeholder="Nombres" required>
+          <input type="text" [(ngModel)]="newUser.email" name="email" class="form-control" placeholder="@Email" required>
           <span class="input-group-icon">
             <i class="fas fa-user"></i>
           </span>
-          <input type="text" [(ngModel)]="newStudent.apellidos" name="apellidos" class="form-control" placeholder="Apellidos" required>
+          <input type="text" [(ngModel)]="newUser.password" name="password" class="form-control" placeholder="Password" required>
         </div>
       </div>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-tooltip" data-tooltip="Fecha de Nacimiento">
-            <i class="fas fa-info-circle"></i>
-          </span>
-          <input type="date" [(ngModel)]="newStudent.fechaNacimiento" name="fechaNacimiento" class="form-control" required>
-          <span class="input-group-tooltip">
-            <i class="fas fa-info-circle"></i>
-          </span>
-          <input type="text" [(ngModel)]="newStudent.numeroDocumento" name="numeroDocumento" class="form-control" placeholder="Número de Documento" required>
-        </div>
-      </div>
+
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-icon">
             <i class="fas fa-school"></i>
           </span>
-          <select [(ngModel)]="newStudent.colegio" name="colegio" class="form-control" required>
-            <option value="">Seleccione un colegio</option>
-            <option *ngFor="let school of schools" [value]="school">{{ school.name }}</option>
+          <input type="text" [(ngModel)]="newStudent.identifier" name="identifier" class="form-control" placeholder="Identifier" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-icon">
+            <i class="fas fa-user"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.name" name="name" class="form-control" placeholder="Name" required pattern="[A-Za-z]+">
+          <span class="input-group-icon">
+            <i class="fas fa-user"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.lastName" name="lastName" class="form-control" placeholder="LastName" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <input type="number" [(ngModel)]="newStudent.age" name="age" class="form-control" placeholder="Age" required>
+          <span class="input-group-tooltip">
+            <i class="fas fa-info-circle"></i>
+          </span>
+          <input type="text" [(ngModel)]="newStudent.dni" name="dni" class="form-control" placeholder="Number Document" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-icon">
+            <i class="fas fa-school"></i>
+          </span>
+          <input type="text" [value]="School.name" readonly class="form-control">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-icon">
+            <i class="fas fa-chalkboard"></i>
+          </span>
+          <select [(ngModel)]="classroomsBySchool" name="classroom" class="form-control" required>
+            <option value="">Select a classroom</option>
+            <option *ngFor="let classroom of classroomsBySchool" [value]="classroom.id">{{ classroom.name }}</option>
           </select>
-          
-          
         </div>
       </div>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </span>
-          <input type="number" [(ngModel)]="newStudent.grado" name="grado" class="form-control" placeholder="Grado" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-icon">
-            <i class="fas fa-users"></i>
-          </span>
-          <input type="text" [(ngModel)]="newStudent.seccion" name="seccion" class="form-control" placeholder="Sección" required>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Agregar</button>
+     
+      <button type="submit" class="btn btn-primary">ADD Student</button>
     </form>
   </div>
 
-  <div class="card list-card">
-    <h2>Listado de Estudiantes</h2>
+  <div class="card mt-4">
+    <h2>Students List</h2>
 
     <table class="table">
       <thead>
         <tr>
-          <th>Nombres</th>
-          <th>Apellidos</th>
-          <th>Fecha de Nacimiento</th>
-          <th>Número de Documento</th>
-          <th>Colegio</th>
-          <th>Grado</th>
-          <th>Sección</th>
+          <th>Identifier</th>
+          <th>Name</th>
+          <th>LastName</th>
+          <th>Age</th>
+          <th>dni</th>
+          <th>email</th>
+          <th>Classroom</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let student of students; let i = index">
-          <td>{{ student.nombres }}</td>
-          <td>{{ student.apellidos }}</td>
-          <td>{{ student.fechaNacimiento }}</td>
-          <td>{{ student.numeroDocumento }}</td>
-          <td>{{ student.colegio.name }}</td>
-          <td>{{ student.grado }}</td>
-          <td>{{ student.seccion }}</td>
+          <td>{{ student.identifier }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.age }}</td>
+          <td>{{ student.dni }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.classroom?.name }}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
           </td>
