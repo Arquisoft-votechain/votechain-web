@@ -37,11 +37,21 @@
           <span class="input-group-icon">
             <i class="fas fa-school"></i>
           </span>
-          <input type="text" [(ngModel)]="newStudent.colegio" name="colegio" class="form-control" placeholder="Colegio" required>
+          <select [(ngModel)]="newStudent.colegio" name="colegio" class="form-control" required (change)="getClassroomsForSchool(newStudent.colegio.id)">
+            <option value="">Seleccione un colegio</option>
+            <option *ngFor="let school of schools" [value]="school">{{ school.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
           <span class="input-group-icon">
             <i class="fas fa-graduation-cap"></i>
           </span>
-          <input type="number" [(ngModel)]="newStudent.grado" name="grado" class="form-control" placeholder="Grado" required>
+          <select [(ngModel)]="newStudent.classroom" name="classroom" class="form-control" required>
+            <option value="">Seleccione un Classroom</option>
+            <option *ngFor="let classroom of classrooms" [value]="classroom">{{ classroom.name }}</option>
+          </select>
         </div>
       </div>
       <div class="form-group">
@@ -67,7 +77,7 @@
           <th>Fecha de Nacimiento</th>
           <th>Número de Documento</th>
           <th>Colegio</th>
-          <th>Grado</th>
+          <th>Classroom</th>
           <th>Sección</th>
           <th>Acciones</th>
         </tr>
@@ -78,8 +88,8 @@
           <td>{{ student.apellidos }}</td>
           <td>{{ student.fechaNacimiento }}</td>
           <td>{{ student.numeroDocumento }}</td>
-          <td>{{ student.colegio }}</td>
-          <td>{{ student.grado }}</td>
+          <td>{{ student.colegio?.name }}</td>
+          <td>{{ student.classroom?.name }}</td>
           <td>{{ student.seccion }}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>

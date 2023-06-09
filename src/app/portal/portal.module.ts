@@ -9,6 +9,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { IconsModule } from '../icons/icons.module';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SchoolService } from '../services/school.services';
 
 
 
@@ -25,7 +27,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     CommonModule,
     IconsModule,
     FormsModule,
-    PortalRoutingModule
+    PortalRoutingModule,
+    HttpClientModule,
+  ],
+  providers: [
+    SchoolService,
   ]
 })
 export class PortalModule { }
