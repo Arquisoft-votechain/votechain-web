@@ -4,12 +4,14 @@ import { PoliticPartyComponent } from './pages/politic-party/politic-party.compo
 import { StudentCRUDComponent } from './pages/student-crud/student-crud.component';
 import { ElectoralProcessCRUDComponent } from './pages/electoral-process-crud/electoral-process-crud.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'politic-party', component: PoliticPartyComponent },
   {path: 'student', component: StudentCRUDComponent },
   {path: 'electoral-process', component: ElectoralProcessCRUDComponent },
   {path: 'home', component: HomeComponent },
+  {path: 'dashboard', component: DashboardComponent },
 ];
 
 

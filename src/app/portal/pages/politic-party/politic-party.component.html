@@ -2,34 +2,47 @@
   <app-sidebar/>
 </header>
 
-<div>
-  <h3>Nuevo Partido Político</h3>
-  <form (submit)="saveParty()">
-    <div class="form-group">
-      <label for="partyName">Nombre del partido:</label>
-      <input type="text" class="form-control" id="partyName" [(ngModel)]="party.name" name="partyName" required>
+<section class="container mt-4">
+  <div class="card p-4">
+    <h5 class="card-title">Nuevo partido politico</h5>
+  
+    <div class="card-body">
+      <form (submit)="saveParty()">
+        <div class="form-group">
+          <label for="partyName">Nombre del partido:</label>
+          <input type="text" class="form-control" id="partyName" [(ngModel)]="party.name" name="partyName" required>
+        </div>
+        <div class="form-group">
+          <label for="partyDescription">Descripción:</label>
+          <textarea class="form-control" id="partyDescription" [(ngModel)]="party.description" name="partyDescription" required></textarea>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit">Guardar</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="partyDescription">Descripción:</label>
-      <textarea class="form-control" id="partyDescription" [(ngModel)]="party.description" name="partyDescription" required></textarea>
-    </div>
-    <div class="form-group">
-      <label for="memberName">Nombre del miembro:</label>
-      <input type="text" class="form-control" id="memberName" [(ngModel)]="memberName" name="memberName" required>
-    </div>
-    <div class="form-group">
-      <label for="memberDNI">DNI del miembro:</label>
-      <input type="text" class="form-control" id="memberDNI" [(ngModel)]="memberDNI" name="memberDNI" required>
-    </div>
-    <button class="btn btn-primary" type="submit">Guardar</button>
-  </form>
-</div>
+  </div>
 
-<hr>
+  <div class="card p-4 mt-4">
+    <h5 class="card-title">Listado de Procesos Electorales</h5>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Descripcion</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td>titulo</td>
+          <td>descripcion</td>
+          
+          <td>
+            <button class="btn btn-success">+ Participantes</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-<div>
-  <h3>Miembros del Partido</h3>
-  <ul>
-    <li *ngFor="let member of party.members">{{ member.name }} (DNI: {{ member.dni }}) <button class="btn btn-danger" (click)="deleteMember(member)">Eliminar</button></li>
-  </ul>
-</div>
