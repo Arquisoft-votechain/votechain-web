@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SchoolService {
   private apiUrl = 'http://localhost:3000/schools';
-  private apiUrl2 = 'http://localhost:3000/schools/{id}/classrooms';
+ 
 
   constructor(private http: HttpClient) { }
 
@@ -15,8 +15,7 @@ export class SchoolService {
   }
 
   getClassRoomByIdSchool(id: number) {
-    const url = `${this.apiUrl}/${id}/classrooms`; // Construir la URL correcta
-    return this.http.get<any[]>(url);
+    const url = `${this.apiUrl}/${id}/classrooms`;
   }
   
   
