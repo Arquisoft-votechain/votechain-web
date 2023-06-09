@@ -1,37 +1,65 @@
-import { Component } from '@angular/core';
-import { Party } from 'src/app/models/party.model';
+import { Component, OnInit } from '@angular/core';
+import { SchoolService } from 'src/app/services/school.services';
 
 @Component({
   selector: 'app-politic-party',
   templateUrl: './politic-party.component.html',
   styleUrls: ['./politic-party.component.scss']
 })
-export class PoliticPartyComponent {
-  parties: Party[] = [];
-  party: Party = new Party('', '', [], []); // Asegúrate de proporcionar los argumentos necesarios
+export class PoliticPartyComponent implements OnInit {
+  listPoliticParties: any[] = [];
+  listaPropuestas: String[] = [];
+  propuesta: String = "";
 
-  memberName: string = '';
-  memberDNI: string = '';
+  politicParty: any = {
+    name: '',
+    description: '',
+    proposes: []
+  };
 
-  saveParty() {
-    // Lógica para guardar el partido político
-    // Aquí puedes implementar la llamada a un servicio o hacer las operaciones necesarias para guardar los datos
-    console.log('Partido político guardado:', this.party);
+  constructor(private schoolService: SchoolService) { }
+
+  ngOnInit() {
+    this.getPoliticParties();
   }
 
-  addMember() {
-    if (this.memberName && this.memberDNI) {
-      const newMember = { name: this.memberName, dni: this.memberDNI };
-      this.party.members.push(newMember);
-      this.memberName = '';
-      this.memberDNI = '';
+  getPoliticParties() {
+    //TODO la escuela id debe definirse
+    this.schoolService.getPoliticalParties(1).subscribe({
+      next: (response: any[]) => {
+        this.listPoliticParties = response;
+      },
+      error: (error: any) => {
+        console.log('Error al obtener las politicas parties:', error);
+      }
+    });
+  }
+
+  addPropuestas(propuesta: String): void {
+    if(propuesta != '') {
+      this.listaPropuestas.push(propuesta);
+    }
+    this.propuesta = '';
+  }
+
+  deletePropuesta(propuesta: String): void {
+    const index = this.listaPropuestas.indexOf(propuesta);
+    if (index >= 0) {
+      this.listaPropuestas.splice(index, 1);
     }
   }
 
-  deleteMember(member: { name: string; dni: string }) {
-    const index = this.party.members.indexOf(member);
-    if (index !== -1) {
-      this.party.members.splice(index, 1);
-    }
+  postPoliticParty() {
+    this.politicParty.proposes = this.listaPropuestas;
+    this.schoolService.postPoliticalParties(1, this.politicParty).subscribe({
+      next: (response: any[]) => {
+        console.log("respuesta " + response);
+      },
+      error: (error: any) => {
+        console.log('Error al crear un politic party:', error);
+      }
+    });
+    this.getPoliticParties();
   }
+  
 }
