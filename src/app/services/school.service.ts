@@ -5,19 +5,22 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SchoolService {
-  private apiUrl = 'http://localhost:3000/schools';
+  private apiUrl = 'http://localhost:3000';
+
   private apiUrl2 = 'http://localhost:3000/schools/{id}/classrooms';
   private apiMasterPoliticalParties = 'http://localhost:3000/schools/';
-
   constructor(private http: HttpClient) { }
 
-  getSchools() {
-    return this.http.get<any[]>(this.apiUrl);
-  }
 
+  
+  getSchoolById(id:number){
+    const url = `${this.apiUrl}/schools/${id}`;
+    return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
+
+  }
   getClassRoomByIdSchool(id: number) {
-    const url = `${this.apiUrl}/${id}/classrooms`; // Construir la URL correcta
-    return this.http.get<any[]>(url);
+    const url = `${this.apiUrl}/schools/${id}/classrooms`;
+    return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
   }
 
   getPoliticalParties(id: number) {
@@ -27,5 +30,4 @@ export class SchoolService {
   postPoliticalParties(id: number, politicalParty:any) {
     return this.http.post<any>(this.apiMasterPoliticalParties+ `${id}/master-political-parties`, politicalParty);
   }
-  
 }

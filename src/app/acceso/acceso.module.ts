@@ -5,6 +5,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { IconsModule } from '../icons/icons.module';
 import { FormsModule } from '@angular/forms';
 
+
+
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -14,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     AccesoRoutingModule,
     IconsModule,
     FormsModule
+   
   ]
 })
 export class AccesoModule { }

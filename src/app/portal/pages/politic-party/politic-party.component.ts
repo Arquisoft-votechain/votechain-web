@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SchoolService } from 'src/app/services/school.services';
+import { SchoolService } from 'src/app/services/school.service';
 
 @Component({
   selector: 'app-politic-party',
