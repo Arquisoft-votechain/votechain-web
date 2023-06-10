@@ -86,7 +86,7 @@
           <th>LastName</th>
           <th>Age</th>
           <th>dni</th>
-          <th>email</th>
+          <th>userl</th>
           <th>Classroom</th>
           <th>Acciones</th>
         </tr>
@@ -98,7 +98,7 @@
           <td>{{ student.lastName }}</td>
           <td>{{ student.age }}</td>
           <td>{{ student.dni }}</td>
-          <td>{{ student.email }}</td>
+          <td>{{ student.user }}</td>
           <td>{{ student.classroom?.name }}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
