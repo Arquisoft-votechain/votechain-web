@@ -1,44 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SchoolService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = environment.apiUrl + 'schools';
 
-  private apiUrl2 = 'http://localhost:3000/schools/{id}/classrooms';
-  private apiMasterPoliticalParties = 'http://localhost:3000/schools/';
   constructor(private http: HttpClient) { }
 
-
-  
   getSchoolById(id:number){
-    const url = `${this.apiUrl}/schools/${id}`;
+    const url = `${this.apiUrl}/${id}`;
     return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
 
   }
   getClassRoomByIdSchool(id: number) {
-    const url = `${this.apiUrl}/schools/${id}/classrooms`;
+    const url = `${this.apiUrl}/${id}/classrooms`;
     return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
   }
 
   getPoliticalParties(id: number) {
-    return this.http.get<any[]>(this.apiMasterPoliticalParties + `${id}/master-political-parties`);
+    return this.http.get<any[]>(this.apiUrl + `/${id}/master-political-parties`);
   }
 
   postPoliticalParties(id: number, politicalParty:any) {
-    return this.http.post<any>(this.apiMasterPoliticalParties+ `${id}/master-political-parties`, politicalParty);
+    return this.http.post<any>(this.apiUrl+ `/${id}/master-political-parties`, politicalParty);
   }
+
   createElectoralProcesses(electoralProcesstData: any,schoolId:number) {
-    const url = `${this.apiUrl}/schools/${schoolId}/electoral-processes`;
+    const url = `${this.apiUrl}/${schoolId}/electoral-processes`;
     return this.http.post(url, electoralProcesstData); // Realiza la solicitud POST y devuelve el resultado
   }
+  
   getElectoralProcessBySchoolId(schoolId:number){
-    const url = `${this.apiUrl}/schools/${schoolId}/electoral-processes`;
+    const url = `${this.apiUrl}/${schoolId}/electoral-processes`;
     return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
   }
-  
-
 
 }
