@@ -5,11 +5,13 @@ import { StudentCRUDComponent } from './pages/student-crud/student-crud.componen
 import { ElectoralProcessCRUDComponent } from './pages/electoral-process-crud/electoral-process-crud.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ElectoralProcessStudentComponent } from './pages/electoral-process-student/electoral-process-student.component';
 
 const routes: Routes = [
   {path: 'politic-party', component: PoliticPartyComponent },
   {path: 'student', component: StudentCRUDComponent },
   {path: 'electoral-process', component: ElectoralProcessCRUDComponent },
+  {path: 'electoral-process-student', component: ElectoralProcessStudentComponent },
   {path: 'home', component: HomeComponent },
   {path: 'dashboard', component: DashboardComponent },
 ];

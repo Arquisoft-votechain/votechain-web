@@ -30,4 +30,15 @@ export class SchoolService {
   postPoliticalParties(id: number, politicalParty:any) {
     return this.http.post<any>(this.apiMasterPoliticalParties+ `${id}/master-political-parties`, politicalParty);
   }
+  createElectoralProcesses(electoralProcesstData: any,schoolId:number) {
+    const url = `${this.apiUrl}/schools/${schoolId}/electoral-processes`;
+    return this.http.post(url, electoralProcesstData); // Realiza la solicitud POST y devuelve el resultado
+  }
+  getElectoralProcessBySchoolId(schoolId:number){
+    const url = `${this.apiUrl}/schools/${schoolId}/electoral-processes`;
+    return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
+  }
+  
+
+
 }

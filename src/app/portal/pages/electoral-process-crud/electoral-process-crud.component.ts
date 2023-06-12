@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { School } from 'src/app/models/school.model';
+import { SchoolService } from 'src/app/services/school.service';
 
 @Component({
   selector: 'app-electoral-process-crud',
@@ -6,42 +8,102 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./electoral-process-crud.component.css']
 })
 export class ElectoralProcessCRUDComponent implements OnInit {
-  processes: any[] = [];
-  newProcess: any = {};
+  electoralProcess: any[] = [];
+  newElectoralProcess: any = {
+    title:'',
+    startDate:'',
+    endDate:'',
+    status:''
+  };
+  school:School=new School();
+  electoralProcessList:any[]=[];
 
-  parties: any[] = [
-    { id: 1, name: 'Partido 1' },
-    { id: 2, name: 'Partido 2' },
-    { id: 3, name: 'Partido 3' }
-  ];
+ 
+ 
 
-  students: any[] = [
-    { id: 1, name: 'Estudiante 1' },
-    { id: 2, name: 'Estudiante 2' },
-    { id: 3, name: 'Estudiante 3' }
-  ];
+  constructor(private schoolService: SchoolService
 
-  constructor() { }
+  ) { }
 
   ngOnInit() {
+    this.getSchoolById(2);
+    this.showElectoralProcessBySchool(2);
   }
-
-  addProcess() {
-    this.processes.push(this.newProcess);
-    this.newProcess = {};
+  getSchoolById(schoolId: number) {
+    this.schoolService.getSchoolById(schoolId).subscribe({
+      next: (response: any) => {
+   
+        this.school = response.resource;
+        console.log(this.school,"este es objeto");
+      },
+      error: (error: any) => {
+        console.log('Error al obtener la escuela:', error);
+      }
+    });
   }
+  getElectoralProcessBySchoolId(schoolId:number){
+    this.schoolService.getElectoralProcessBySchoolId(schoolId).subscribe(
+      {
+        next:responseElectoralProcess=>{
+          console.log(responseElectoralProcess,"electoralProcess by School");
+          this.electoralProcessList=responseElectoralProcess;
 
+        },
+        error:error=>{
+          console.log('Error al obtener electoral process by shcool:', error);
+        }
+      }
+    )
+
+  }
+  showElectoralProcessBySchool(schoolId:number){
+    this.getElectoralProcessBySchoolId(schoolId);
+  
+  }
+  
+
+
+
+
+  addElectoralProcesses() {
+
+    const startDateLocal = new Date(this.newElectoralProcess.startDate);
+    const endDateLocal = new Date(this.newElectoralProcess.endDate);
+    // Convierte las fechas al formato ISO 8601
+    const startDateISO = startDateLocal.toISOString();
+    const endDateISO = endDateLocal.toISOString();
+
+    this.electoralProcess.push({
+      title:this.newElectoralProcess.title,
+      startDate: startDateISO,
+      endDate: endDateISO,
+      status:parseInt(this.newElectoralProcess.status),
+      schoolId:this.school.id
+    });
+    console.log("electoralProcess",this.electoralProcess[0]);
+    if(this.school.id!=0){
+      this.schoolService.createElectoralProcesses(this.electoralProcess[0],this.school.id).subscribe(
+        {
+          next:(responseElectoralProcess:any)=>{
+            console.log('Respuesta de createEelctoralProcess:', responseElectoralProcess);
+            this.showElectoralProcessBySchool(this.school.id);
+
+          },
+          error:(error:any)=>{
+            console.log('error create electoral process',error);
+          }
+        });
+    }
+    
+    
+    
+ 
+  }
   deleteProcess(index: number) {
-    this.processes.splice(index, 1);
+      
   }
+ 
 
-  getStudentName(studentId: number): string {
-    const student = this.students.find(student => student.id === studentId);
-    return student ? student.name : '';
-  }
-  getPartyName(partyId: number): string {
-    const party = this.parties.find(party => party.id === partyId);
-    return party ? party.name : '';
-  }
+
   
 }

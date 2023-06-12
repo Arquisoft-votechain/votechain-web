@@ -7,13 +7,14 @@ import { PoliticPartyComponent } from './pages/politic-party/politic-party.compo
 import { UsersComponent } from './pages/users/users.component';
 import { StudentCRUDComponent } from './pages/student-crud/student-crud.component';
 import { HomeComponent } from './pages/home/home.component';
-import { IconsModule } from '../icons/icons.module';
 import { ElectoralProcessCRUDComponent } from './pages/electoral-process-crud/electoral-process-crud.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentService } from '../services/student.service';
 import { UserService } from '../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ElectoralProcessStudentComponent } from './pages/electoral-process-student/electoral-process-student.component';
+import { ElectoralProcess } from '../services/electoralProcess.service';
 
 
 
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     ElectoralProcessCRUDComponent,
     HomeComponent,
     SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
+    ElectoralProcessStudentComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     SchoolService,
     StudentService,
-    UserService
+    UserService,
+    ElectoralProcess
   ]
 })
 export class PortalModule { }

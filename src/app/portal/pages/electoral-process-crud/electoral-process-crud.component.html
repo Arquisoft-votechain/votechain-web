@@ -6,61 +6,58 @@
   <div class="container mt-4">
     <div class="card p-4">
       <h2 class="card-title">Agregar Proceso Electoral</h2>
-      <form (ngSubmit)="addProcess()" class="needs-validation">
+      <form (ngSubmit)="addElectoralProcesses()" class="needs-validation">
         <div class="mb-3">
-          <label for="titulo" class="form-label">Título:</label>
-          <input type="text" [(ngModel)]="newProcess.titulo" name="titulo" class="form-control" id="titulo" required>
+          <input type="text" [(ngModel)]="newElectoralProcess.title" name="title" class="form-control" id="title" placeholder="Title" required>
         </div>
         <div class="mb-3">
-          <label for="fechaComienzo" class="form-label">Fecha de Comienzo:</label>
-          <input type="date" [(ngModel)]="newProcess.fechaComienzo" name="fechaComienzo" class="form-control" id="fechaComienzo" required>
+          <label for="startDate" class="form-label">Start date and time:</label>
+          <input type="datetime-local" [(ngModel)]="newElectoralProcess.startDate" name="startDate" class="form-control" id="startDate" required>
         </div>
         <div class="mb-3">
-          <label for="fechaHoraFinalizacion" class="form-label">Fecha y Hora de Finalización:</label>
-          <input type="datetime-local" [(ngModel)]="newProcess.fechaHoraFinalizacion" name="fechaHoraFinalizacion" class="form-control" id="fechaHoraFinalizacion" required>
+          <label for="endDate" class="form-label">end date and time:</label>
+          <input type="datetime-local" [(ngModel)]="newElectoralProcess.endDate" name="endDate" class="form-control" id="endDate" required>
         </div>
         <div class="mb-3">
-          <label for="estado" class="form-label">Estado:</label>
-          <select class="form-select" [(ngModel)]="newProcess.estado" name="estado" id="estado" required>
-            <option value="activo">Activo</option>
-            <option value="pendiente">Pendiente</option>
-            <option value="desactivado">Desactivado</option>
+          <label for="status" class="form-label">Estatus:</label>
+          <select class="form-select" [(ngModel)]="newElectoralProcess.status" name="status" id="status" required>
+            <option value=1>Activo</option>
+            <option value=2>Pendiente</option>
+            <option value=3>Desactivado</option>
           </select>
         </div>
+        
+       
         <div class="mb-3">
-          <label for="partidoPolitico" class="form-label">Partido Político:</label>
-          <select class="form-select" [(ngModel)]="newProcess.partidoPolitico" name="partidoPolitico" id="partidoPolitico" required>
-            <option *ngFor="let party of parties" [value]="party.id">{{ party.name }}</option>
-          </select>
+          <input type="text" [value]="school.name" readonly >
         </div>
+
+
         <button type="submit" class="btn btn-primary">Agregar</button>
       </form>
     </div>
 
     <div class="card p-4 mt-4 list-card">
-      <h2 class="card-title mt-5">Listado de Procesos Electorales</h2>
+      <h2 class="card-title mt-5">List of Electoral Processes</h2>
       <div class="card-body">
         <table class="table">
           <thead>
             <tr>
-              <th>Título</th>
-              <th>Fecha de Comienzo</th>
-              <th>Fecha y Hora de Finalización</th>
-              <th>Estado</th>
-              <th>Partido Político</th>
-              <th>Estudiante</th>
+              <th>Title</th>
+              <th>Start date</th>
+              <th>End Date</th>
+              <th>status</th>
+              <th>SchoolId</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let process of processes; let i = index">
-              <td>{{ process.titulo }}</td>
-              <td>{{ process.fechaComienzo }}</td>
-              <td>{{ process.fechaHoraFinalizacion }}</td>
-              <td>{{ process.estado }}</td>
-              <td>{{ getPartyName(process.partidoPolitico) }}</td>
-              <td>{{ getStudentName(process.estudiante) }}</td>
-              
+            <tr *ngFor="let electoralProcess of electoralProcessList; let i = index">
+              <td>{{ electoralProcess.title}}</td>
+              <td>{{ electoralProcess.startDate }}</td>
+              <td>{{ electoralProcess.endDate }}</td>
+              <td>{{ electoralProcess.status }}</td>
+              <td>{{ electoralProcess.schoolId }}</td>
               <td>
                 <button class="btn btn-danger" (click)="deleteProcess(i)">Eliminar</button>
               </td>

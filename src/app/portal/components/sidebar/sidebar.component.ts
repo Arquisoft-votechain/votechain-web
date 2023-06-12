@@ -8,21 +8,41 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   responsiveMenu: any;
   responsiveContent: any;
-  isDropdownOpen = false;
+  isDropdownOpen1 = false;
+  isDropdownOpen2 = false;
+  isDropdownOpen3 = false;
 
   openNav() {
-    if (!this.isDropdownOpen) {
+    if (!this.isDropdownOpen1) {
+      this.responsiveMenu = { 'display': 'block' };
+      this.responsiveContent = { 'margin-left': '150px' };
+    }
+    if (!this.isDropdownOpen2) {
+      this.responsiveMenu = { 'display': 'block' };
+      this.responsiveContent = { 'margin-left': '150px' };
+    }
+    if (!this.isDropdownOpen3) {
       this.responsiveMenu = { 'display': 'block' };
       this.responsiveContent = { 'margin-left': '150px' };
     } else {
       this.responsiveMenu = { 'display': null };
       this.responsiveContent = { 'margin-left': null };
     }
-    this.isDropdownOpen = !this.isDropdownOpen;
+    this.isDropdownOpen1 = !this.isDropdownOpen1;
+    this.isDropdownOpen2 = !this.isDropdownOpen2;
+    this.isDropdownOpen3 = !this.isDropdownOpen3;
   }
 
-  toggleDropdown(event: Event) {
+  toggleDropdown1(event: Event) {
     event.preventDefault();
-    this.isDropdownOpen = !this.isDropdownOpen;
+    this.isDropdownOpen1 = !this.isDropdownOpen1;
+  }
+  toggleDropdown2(event: Event) {
+    event.preventDefault();
+    this.isDropdownOpen2 = !this.isDropdownOpen2;
+  }
+  toggleDropdown3(event: Event) {
+    event.preventDefault();
+    this.isDropdownOpen3 = !this.isDropdownOpen3;
   }
 }

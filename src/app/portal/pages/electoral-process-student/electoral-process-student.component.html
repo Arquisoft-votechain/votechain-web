@@ -1,0 +1,120 @@
+<header>
+    <app-sidebar/>
+  </header>
+  
+  <section>
+    <div class="container mt-4">
+      <div class="card p-4">
+        <h2 class="card-title">Associate student to electoral process</h2>
+        <form (ngSubmit)="addElectoralProcessStudentRelation()" class="needs-validation">
+         
+            <div class="mb-3">
+                <input type="text" [value]="school.name" readonly >
+              </div>
+      
+
+          <div class="mb-3">
+            <label for="electoralProcess" class="form-label">Electoral Process:</label>
+            <select [(ngModel)]="selectedElectoralProcess" name="electoralProcess" class="form-control" (change)="showStudentTableByElectoralProcessId()" required>
+                <option value="">Select a Electoral Process</option>
+                <option *ngFor="let electoralProcess of electoralProcessBySchool" [value]="electoralProcess.id">{{ electoralProcess.title }}</option>
+              </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="classroom" class="form-label">classroom:</label>
+            <select [(ngModel)]="selectedClassrooms" name="classroom" class="form-control" (change)="showStudentTableByclassRoomId()" required>
+                <option value="">Select a classroom</option>
+                <option *ngFor="let classroom of classroomsBySchool" [value]="classroom.id">{{ classroom.name }}</option>
+            </select>
+          </div>
+          
+
+
+
+
+
+          
+         
+         
+  
+  
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+  
+      <div class="card mt-4">
+        <h2>Students List by classroom</h2>
+    
+        <table class="table">
+          <thead>
+            <tr>
+              <th>selected</th>
+              <th>Identifier</th>
+              <th>Name</th>
+              <th>LastName</th>
+              <th>Age</th>
+              <th>dni</th>
+              <th>userId</th>
+              <th>ClassroomId</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let studentClassroom of studentsClassroom; let i = index">
+              
+                <td><input type="checkbox" [value]="studentClassroom.id" (change)="handleCheckboxChangeClassroom($event, studentClassroom.id)"></td>
+              <td>{{ studentClassroom.identifier }}</td>
+              <td>{{ studentClassroom.name }}</td>
+              <td>{{ studentClassroom.lastName }}</td>
+              <td>{{ studentClassroom.age }}</td>
+              <td>{{ studentClassroom.dni }}</td>
+              <td>{{ studentClassroom.userId}}</td>
+              <td>{{ studentClassroom.classroomId}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteStudentClassroom(i)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card mt-4">
+        <h2>Students List by Electoral Process</h2>
+    
+        <table class="table">
+          <thead>
+            <tr>
+              <th>selected</th>
+              <th>Identifier</th>
+              <th>Name</th>
+              <th>LastName</th>
+              <th>Age</th>
+              <th>dni</th>
+              <th>userId</th>
+              <th>ClassroomId</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let studentElectoralProcess of studentsElectoralProcess; let i = index">
+              
+                <td><input type="checkbox" [value]="studentElectoralProcess.id" (change)="handleCheckboxChangeElectoralProcess($event, studentElectoralProcess.id)"></td>
+              <td>{{ studentElectoralProcess.identifier }}</td>
+              <td>{{ studentElectoralProcess.name }}</td>
+              <td>{{ studentElectoralProcess.lastName }}</td>
+              <td>{{ studentElectoralProcess.age }}</td>
+              <td>{{ studentElectoralProcess.dni }}</td>
+              <td>{{ studentElectoralProcess.userId}}</td>
+              <td>{{ studentElectoralProcess.classroomId}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteStudentElectoralProcess(i)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+    

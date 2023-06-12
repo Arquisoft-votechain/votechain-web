@@ -13,4 +13,12 @@ export class StudentService {
     const url = `${this.apiUrl}/student`;
     return this.http.post(url, studentData); // Realiza la solicitud POST y devuelve el resultado
   }
+  
+
+  getStudentByClassroomId(id: number) {
+    const url = `${this.apiUrl}/student/classroom/${id}`;
+    return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
+  }
 }
+
+

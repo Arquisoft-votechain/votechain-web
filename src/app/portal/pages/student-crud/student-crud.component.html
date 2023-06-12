@@ -68,7 +68,7 @@
           <span class="input-group-icon">
             <i class="fas fa-chalkboard"></i>
           </span>
-          <select [(ngModel)]="classroomsBySchool" name="classroom" class="form-control" required>
+          <select [(ngModel)]="selectedClassrooms" name="classroom" class="form-control" (change)="showStudentTableByclassRoomId()" required>
             <option value="">Select a classroom</option>
             <option *ngFor="let classroom of classroomsBySchool" [value]="classroom.id">{{ classroom.name }}</option>
           </select>
@@ -90,8 +90,8 @@
           <th>LastName</th>
           <th>Age</th>
           <th>dni</th>
-          <th>email</th>
-          <th>Classroom</th>
+          <th>userId</th>
+          <th>ClassroomId</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -102,8 +102,8 @@
           <td>{{ student.lastName }}</td>
           <td>{{ student.age }}</td>
           <td>{{ student.dni }}</td>
-          <td>{{ student.email }}</td>
-          <td>{{ student.classroom?.name }}</td>
+          <td>{{ student.userId}}</td>
+          <td>{{ student.classroomId}}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
           </td>
