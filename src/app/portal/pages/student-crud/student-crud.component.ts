@@ -66,6 +66,7 @@ export class StudentCRUDComponent implements OnInit {
     this.schoolService.getClassRoomByIdSchool(schoolId).subscribe({
       next: response=>{
         this.classroomsBySchool = response;
+        console.log(response,"classroom");
       },
       error: error=>{
         console.log('Error al obtener los salones de clases del colegio:', error);
