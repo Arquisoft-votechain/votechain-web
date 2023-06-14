@@ -4,9 +4,6 @@ import { UserService } from 'src/app/services/user.service';
 import { StudentService } from 'src/app/services/student.service';
 import { School } from 'src/app/models/school.model';
 
-
-
-
 @Component({
   selector: 'app-student-crud',
   templateUrl: './student-crud.component.html',
@@ -41,7 +38,6 @@ export class StudentCRUDComponent implements OnInit {
 
 
   ngOnInit() {
-    
     this.getClassroomsBySchool(2);
     this.getSchoolById(2);
     
@@ -60,8 +56,6 @@ export class StudentCRUDComponent implements OnInit {
     });
   }
   
-  
-
   getClassroomsBySchool(schoolId: number) {
     this.schoolService.getClassRoomByIdSchool(schoolId).subscribe({
       next: response=>{
@@ -73,10 +67,6 @@ export class StudentCRUDComponent implements OnInit {
       }
     });
   }
-
-
-
-  
 
   getStudentByClassroomId(classroomId:number){
     this.studentService.getStudentByClassroomId(classroomId).subscribe({
@@ -144,8 +134,6 @@ export class StudentCRUDComponent implements OnInit {
     });
   }
   
-  
-
   deleteStudent(index: number) {
     this.students.splice(index, 1);
   }

@@ -7,7 +7,7 @@
     <h5 class="card-title">Nuevo partido politico</h5>
   
     <div class="card-body">
-      <form (ngSubmit)="postPoliticParty()">
+      <form>
         <div class="form-group">
           <label for="partyName">Nombre del partido:</label>
           <input type="text" class="form-control" id="partyName" [(ngModel)]="this.politicParty.name" name="name" required>
@@ -33,7 +33,7 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn-primary mt-2" type="submit">Guardar</button>
+        <button class="btn btn-primary mt-2" type="button" (click)="postPoliticParty();"  >Guardar</button>
       </form>
     </div>
   </div>
@@ -54,7 +54,10 @@
           <td>{{partido.name}}</td>
           <td>{{partido.description}}</td>
           <td>
-            <button class="btn btn-success">+ Participantes</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentPartyPolitic" (click)="selectPartido(partido);">
+              + Participantes
+            </button>
+            
           </td>
         </tr>
       </tbody>
@@ -62,3 +65,4 @@
   </div>
 </section>
 
+<app-add-student-party-politic [politicParty]="selectedPoliticParty" class="modal fade" id="addStudentPartyPolitic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" />
