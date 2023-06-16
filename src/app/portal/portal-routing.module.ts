@@ -6,6 +6,7 @@ import { ElectoralProcessCRUDComponent } from './pages/electoral-process-crud/el
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ElectoralProcessStudentComponent } from './pages/electoral-process-student/electoral-process-student.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 const routes: Routes = [
   {path: 'politic-party', component: PoliticPartyComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'electoral-process-student', component: ElectoralProcessStudentComponent },
   {path: 'home', component: HomeComponent },
   {path: 'dashboard', component: DashboardComponent },
+  {path: 'statistics', component: StatisticsComponent},
 ];
 
 

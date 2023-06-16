@@ -15,6 +15,8 @@ import { UserService } from '../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ElectoralProcessStudentComponent } from './pages/electoral-process-student/electoral-process-student.component';
 import { ElectoralProcess } from '../services/electoralProcess.service';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { StatisticsService } from '../services/statistics.service';
 
 
 
@@ -27,7 +29,8 @@ import { ElectoralProcess } from '../services/electoralProcess.service';
     HomeComponent,
     SidebarComponent,
     DashboardComponent,
-    ElectoralProcessStudentComponent
+    ElectoralProcessStudentComponent,
+    StatisticsComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +42,8 @@ import { ElectoralProcess } from '../services/electoralProcess.service';
     SchoolService,
     StudentService,
     UserService,
-    ElectoralProcess
+    ElectoralProcess,
+    StatisticsService
   ]
 })
 export class PortalModule { }
