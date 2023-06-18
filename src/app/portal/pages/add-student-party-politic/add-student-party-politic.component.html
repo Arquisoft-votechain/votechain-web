@@ -6,28 +6,48 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>LastName</th>
-                    <th>DNI</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let student of students; let i = index">
-                    <td>{{ student.name }}</td>
-                    <td>{{ student.lastName }}</td>
-                    <td>{{ student.dni }}</td>
-                    <td> Select </td>
-                  </tr>
-                </tbody>
-              </table>
+
+          <div class="row">
+            <div class="col">
+              <span class="input-group-icon">
+                <i class="fas fa-chalkboard"></i>
+              </span>
+
+              <select class="form-select" [(ngModel)]="selectedClassrooms" >
+                <option value="0" selected>Select classroom</option>
+                <option *ngFor="let classroom of classroomsBySchool" [value]="classroom.id">{{ classroom.name }}</option>
+              </select>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary" (click)="showStudentTableByclassRoomId()"> <feather-icon name="filter"/> Filtrar  </button>
+            </div>
+          </div>
+        <div class="card p-2 mt-4">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>DNI</th>
+                <th>Political Party</th>
+                <th>Agregar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of students; let i = index">
+                <td>{{ student.name }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.dni }}</td>
+                <td>{{ student.politicalPartyId != null ? 'Asignado': 'No asignado'  }}</td>
+                <td> <input class="form-check-input me-1" type="checkbox" [(ngModel)]="student.selected" id="firstCheckbox" [disabled]="student.politicalPartyId != null"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-primary" (click)="printPRueba();">Guardar</button>
         </div>
       </div>
     </div>

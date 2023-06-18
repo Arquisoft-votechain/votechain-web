@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { School } from 'src/app/models/school.model';
+import { Component, Input, OnInit } from '@angular/core'
+import { PoliticalPartyParticipantService } from 'src/app/services/political-party-participant-service';
 import { SchoolService } from 'src/app/services/school.service';
 import { StudentService } from 'src/app/services/student.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-student-party-politic',
@@ -12,7 +11,6 @@ import { UserService } from 'src/app/services/user.service';
 export class AddStudentPartyPoliticComponent implements OnInit {
 
   @Input() politicParty?: any;
-  School:School = new School();
   students: any[] = [];
   
   selectedClassrooms: number = 0;
@@ -20,27 +18,13 @@ export class AddStudentPartyPoliticComponent implements OnInit {
 
   constructor(
     private schoolService: SchoolService, 
-    private userService: UserService,
-    private studentService:StudentService
+    private studentService:StudentService,
+    private politicalPartyParticipantService: PoliticalPartyParticipantService,
   ) { }
 
   ngOnInit() { 
     this.getClassroomsBySchool(2);
-    this.getSchoolById(2);
    }
-
-  getSchoolById(schoolId: number) {
-    this.schoolService.getSchoolById(schoolId).subscribe({
-      next: (response: any) => {
-        console.log('Respuesta de getSchoolById:', response);
-        this.School = response.resource;
-        console.log(this.School,"este es objeto");
-      },
-      error: (error: any) => {
-        console.log('Error al obtener la escuela:', error);
-      }
-    });
-  }
   
   getClassroomsBySchool(schoolId: number) {
     this.schoolService.getClassRoomByIdSchool(schoolId).subscribe({
@@ -67,8 +51,33 @@ export class AddStudentPartyPoliticComponent implements OnInit {
 
       }
       });
-      
-    
+  }
 
+  showStudentTableByclassRoomId(){
+    this.getStudentByClassroomId(this.selectedClassrooms);
+  }
+
+  addStudentParticipant() {
+    this.politicalPartyParticipantService.postAssignStudentToPoliticalPartyParticipant(this.politicParty.id, 5).subscribe({
+      next: response=>{
+        console.log("Ingreso : ", response);
+      },
+      error: error=>{
+        console.log('Error ingresar el estudiante', error);
+      }
+    });
+  }
+
+  printPRueba(){
+    this.students.map(student => {
+      this.politicalPartyParticipantService.postAssignStudentToPoliticalPartyParticipant(this.politicParty.id, student.id).subscribe(
+        next => {
+          console.log("Respuesta: ", next);
+          console.log(this.politicParty.id, student.id);
+
+        },
+        error => console.log(error)
+      );
+    });
   }
 }

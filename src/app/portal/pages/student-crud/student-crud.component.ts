@@ -86,9 +86,7 @@ export class StudentCRUDComponent implements OnInit {
 
   }
   showStudentTableByclassRoomId(){
-    
     this.getStudentByClassroomId(this.selectedClassrooms);
-    
   }
 
   addStudent() {
