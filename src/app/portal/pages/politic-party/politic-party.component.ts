@@ -17,6 +17,11 @@ export class PoliticPartyComponent implements OnInit {
     proposes: []
   };
 
+  selectedPoliticParty: any = {
+    name: '',
+    description: '',
+    proposes: []
+  };
   constructor(private schoolService: SchoolService) { }
 
   ngOnInit() {
@@ -60,6 +65,10 @@ export class PoliticPartyComponent implements OnInit {
       }
     });
     this.getPoliticParties();
+  }
+
+  selectPartido(partido: any) {
+    this.selectedPoliticParty = partido;
   }
   
 }

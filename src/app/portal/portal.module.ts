@@ -15,6 +15,8 @@ import { UserService } from '../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ElectoralProcessStudentComponent } from './pages/electoral-process-student/electoral-process-student.component';
 import { ElectoralProcess } from '../services/electoralProcess.service';
+import { IconsModule } from '../icons/icons.module';
+import { AddStudentPartyPoliticComponent } from './pages/add-student-party-politic/add-student-party-politic.component';
 
 
 
@@ -27,13 +29,15 @@ import { ElectoralProcess } from '../services/electoralProcess.service';
     HomeComponent,
     SidebarComponent,
     DashboardComponent,
-    ElectoralProcessStudentComponent
+    ElectoralProcessStudentComponent,
+    AddStudentPartyPoliticComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     PortalRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IconsModule,
   ],
   providers: [
     SchoolService,
