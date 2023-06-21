@@ -2,12 +2,14 @@
 /* topnav css  */
 .topnav {
     width: 100%;
-    position: relative;
+    position: fixed;
     top:0;
     left: 0;
     overflow: hidden;
-    background-color: #fff;
-    border-bottom: 1px solid rgb(128, 128, 128);
+    background: linear-gradient(90deg, rgba(11,155,245,1) 0%, rgba(244,91,105,1) 35%, rgba(246,148,71,1) 100%);
+    color: white;
+    border-bottom: 0px solid rgb(128, 128, 128);
+    z-index: 9999;
 }
 
 .topnav a {
@@ -35,11 +37,14 @@
 
 .sidebar {
     position: fixed;
-    top: 63px;
-    overflow: auto;
-    background-color: #fff;
+    overflow: auto;   
+    top: 62px;     
+    background: linear-gradient(90deg, rgba(11,155,245,1) 40%, rgba(244,91,105,1) 90%);
+
+    color: white;
+    font-weight: bolder;
     height: 100%;
-    border-right: 1px solid rgb(128, 128, 128);
+    border-right: 0px solid rgb(128, 128, 128);
     padding: 30px 5px;
     margin: 0px;
     width: 350px;
@@ -49,7 +54,7 @@
 .sidebar a {
     text-decoration: none;
     padding: 10px 10px;
-    color: #000;
+    color: white;
     text-align: left;
     display: block;
 }
