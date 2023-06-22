@@ -1,112 +1,112 @@
-<header>
-  <app-sidebar/>
-</header>
+<app-sidebar/>
 
-<div class="container">
-  <div class="card">
-    <h2>Agregar Estudiante</h2>
-
-    <form (ngSubmit)="addStudent()" class="form">
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-icon">
-            <i class="fas fa-user"></i>
-          </span>
-          <input type="text" [(ngModel)]="newUser.email" name="email" class="form-control" placeholder="@Email" required>
-          <span class="input-group-icon">
-            <i class="fas fa-user"></i>
-          </span>
-          <input type="text" [(ngModel)]="newUser.password" name="password" class="form-control" placeholder="Password" required>
+<div class="main">
+  <div class="container">
+    <div class="card">
+      <h2>Agregar Estudiante</h2>
+  
+      <form (ngSubmit)="addStudent()" class="form">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-icon">
+              <i class="fas fa-user"></i>
+            </span>
+            <input type="text" [(ngModel)]="newUser.email" name="email" class="form-control" placeholder="@Email" required>
+            <span class="input-group-icon">
+              <i class="fas fa-user"></i>
+            </span>
+            <input type="text" [(ngModel)]="newUser.password" name="password" class="form-control" placeholder="Password" required>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-icon">
-            <i class="fas fa-school"></i>
-          </span>
-          <input type="text" [(ngModel)]="newStudent.identifier" name="identifier" class="form-control" placeholder="Identifier" required>
+  
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-icon">
+              <i class="fas fa-school"></i>
+            </span>
+            <input type="text" [(ngModel)]="newStudent.identifier" name="identifier" class="form-control" placeholder="Identifier" required>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-icon">
-            <i class="fas fa-user"></i>
-          </span>
-          <input type="text" [(ngModel)]="newStudent.name" name="name" class="form-control" placeholder="Name" required pattern="[A-Za-z]+">
-          <span class="input-group-icon">
-            <i class="fas fa-user"></i>
-          </span>
-          <input type="text" [(ngModel)]="newStudent.lastName" name="lastName" class="form-control" placeholder="LastName" required>
+  
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-icon">
+              <i class="fas fa-user"></i>
+            </span>
+            <input type="text" [(ngModel)]="newStudent.name" name="name" class="form-control" placeholder="Name" required pattern="[A-Za-z]+">
+            <span class="input-group-icon">
+              <i class="fas fa-user"></i>
+            </span>
+            <input type="text" [(ngModel)]="newStudent.lastName" name="lastName" class="form-control" placeholder="LastName" required>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <div class="input-group">
-          <input type="number" [(ngModel)]="newStudent.age" name="age" class="form-control" placeholder="Age" required>
-          <span class="input-group-tooltip">
-            <i class="fas fa-info-circle"></i>
-          </span>
-          <input type="text" [(ngModel)]="newStudent.dni" name="dni" class="form-control" placeholder="Number Document" required>
+  
+        <div class="form-group">
+          <div class="input-group">
+            <input type="number" [(ngModel)]="newStudent.age" name="age" class="form-control" placeholder="Age" required>
+            <span class="input-group-tooltip">
+              <i class="fas fa-info-circle"></i>
+            </span>
+            <input type="text" [(ngModel)]="newStudent.dni" name="dni" class="form-control" placeholder="Number Document" required>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-icon">
-            <i class="fas fa-school"></i>
-          </span>
-          <input type="text" [value]="School.name" readonly class="form-control">
+  
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-icon">
+              <i class="fas fa-school"></i>
+            </span>
+            <input type="text" [value]="School.name" readonly class="form-control">
+          </div>
         </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-icon">
-            <i class="fas fa-chalkboard"></i>
-          </span>
-          <select [(ngModel)]="selectedClassrooms" name="classroom" class="form-control" (change)="showStudentTableByclassRoomId()" required>
-            <option value="">Select a classroom</option>
-            <option *ngFor="let classroom of classroomsBySchool" [value]="classroom.id">{{ classroom.name }}</option>
-          </select>
+        
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-icon">
+              <i class="fas fa-chalkboard"></i>
+            </span>
+            <select [(ngModel)]="selectedClassrooms" name="classroom" class="form-control" (change)="showStudentTableByclassRoomId()" required>
+              <option value="">Select a classroom</option>
+              <option *ngFor="let classroom of classroomsBySchool" [value]="classroom.id">{{ classroom.name }}</option>
+            </select>
+          </div>
         </div>
-      </div>
-     
-      <button type="submit" class="btn btn-primary">ADD Student</button>
-    </form>
-  </div>
-
-  <div class="card mt-4">
-    <h2>Students List</h2>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Identifier</th>
-          <th>Name</th>
-          <th>LastName</th>
-          <th>Age</th>
-          <th>dni</th>
-          <th>userId</th>
-          <th>ClassroomId</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of students; let i = index">
-          <td>{{ student.identifier }}</td>
-          <td>{{ student.name }}</td>
-          <td>{{ student.lastName }}</td>
-          <td>{{ student.age }}</td>
-          <td>{{ student.dni }}</td>
-          <td>{{ student.userId}}</td>
-          <td>{{ student.classroomId}}</td>
-          <td>
-            <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+       
+        <button type="submit" class="btn btn-primary">ADD Student</button>
+      </form>
+    </div>
+  
+    <div class="card mt-4">
+      <h2>Students List</h2>
+  
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Identifier</th>
+            <th>Name</th>
+            <th>LastName</th>
+            <th>Age</th>
+            <th>dni</th>
+            <th>userId</th>
+            <th>ClassroomId</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students; let i = index">
+            <td>{{ student.identifier }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.lastName }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.dni }}</td>
+            <td>{{ student.userId}}</td>
+            <td>{{ student.classroomId}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteStudent(i)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

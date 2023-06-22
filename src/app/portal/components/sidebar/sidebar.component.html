@@ -1,7 +1,7 @@
 <!-- topnavbar -->
-<div class="topnav shadow p-1">
-  <span class="menu" (click)="openNav()"><i class="bi bi-list"></i></span>
-  <a>Admin VotechainWeb</a>
+<div class="topnav shadow">
+  <span class="menu ps-2" (click)="openNav()"><i class="bi bi-list"></i></span>
+  <h5 class="text-center pt-3"> <strong> Admin VotechainWeb </strong></h5>
 </div>
 <!-- topnavbar -->
 
@@ -12,10 +12,10 @@
       <li><a routerLink="/portal/"><i class="bi bi-card-text"></i> Estadisticas</a></li>
 
       <li>
-        <a (click)="toggleDropdown3($event)"><i class="bi bi-bag"></i> Student <i class="bi bi-arrow-right icon"></i></a>
+        <a (click)="toggleDropdown3($event)"><i class="bi bi-bag"></i> Student <i class="bi bi-arrow-right icon" ></i></a>
         <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen3}">
           
-          <li><a routerLink="/portal/student"><i class="bi bi-person-gear"></i>Estudiantes</a></li>
+          <li><a routerLink="/portal/student" class="fw-normal"><i class="bi bi-person-gear"></i>Estudiantes</a></li>
           
         </ul>
       </li>
@@ -24,25 +24,19 @@
         <a (click)="toggleDropdown2($event)"><i class="bi bi-bag"></i> Politic Party <i class="bi bi-arrow-right icon"></i></a>
         <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen2}">
           
-          <li><a routerLink="/portal/politic-party">New Politic Party</a></li>
+          <li><a routerLink="/portal/politic-party" class="fw-normal">New Politic Party</a></li>
         </ul>
       </li>
-
-      
       
       <li>
         <a (click)="toggleDropdown1($event)"><i class="bi bi-bag"></i> Electoral Process <i class="bi bi-arrow-right icon"></i></a>
         <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen1}">
-          <li><a routerLink="/portal/electoral-process">New Electoral Process</a></li>
-          <li><a routerLink="/portal/electoral-process-student">Electoral Process-student</a></li>
+          <li><a routerLink="/portal/electoral-process" class="fw-normal">New Electoral Process</a></li>
+          <li><a routerLink="/portal/electoral-process-student" class="fw-normal">Electoral Process-student</a></li>
           
         </ul>
       </li>
 
-     
-
-
-      
       <li><a href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
     </ul>
   </div>

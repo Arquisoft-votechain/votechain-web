@@ -1,73 +1,74 @@
-<header>
-  <app-sidebar/>
-</header>
+<app-sidebar/>
 
-<section>
-  <div class="container mt-4">
-    <div class="card p-4">
-      <h2 class="card-title">Agregar Proceso Electoral</h2>
-      <form (ngSubmit)="addElectoralProcesses()" class="needs-validation">
-        <div class="mb-3">
-          <input type="text" [(ngModel)]="newElectoralProcess.title" name="title" class="form-control" id="title" placeholder="Title" required>
-        </div>
-        <div class="mb-3">
-          <label for="startDate" class="form-label">Start date and time:</label>
-          <input type="datetime-local" [(ngModel)]="newElectoralProcess.startDate" name="startDate" class="form-control" id="startDate" required>
-        </div>
-        <div class="mb-3">
-          <label for="endDate" class="form-label">end date and time:</label>
-          <input type="datetime-local" [(ngModel)]="newElectoralProcess.endDate" name="endDate" class="form-control" id="endDate" required>
-        </div>
-        <div class="mb-3">
-          <label for="status" class="form-label">Estatus:</label>
-          <select class="form-select" [(ngModel)]="newElectoralProcess.status" name="status" id="status" required>
-            <option value=1>Activo</option>
-            <option value=2>Pendiente</option>
-            <option value=3>Desactivado</option>
-          </select>
-        </div>
-        
-       
-        <div class="mb-3">
-          <input type="text" [value]="school.name" readonly >
-        </div>
-
-
-        <button type="submit" class="btn btn-primary">Agregar</button>
-      </form>
-    </div>
-
-    <div class="card p-4 mt-4 list-card">
-      <h2 class="card-title mt-5">List of Electoral Processes</h2>
-      <div class="card-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Start date</th>
-              <th>End Date</th>
-              <th>status</th>
-              <th>SchoolId</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let electoralProcess of electoralProcessList; let i = index">
-              <td>{{ electoralProcess.title}}</td>
-              <td>{{ electoralProcess.startDate }}</td>
-              <td>{{ electoralProcess.endDate }}</td>
-              <td>{{ electoralProcess.status }}</td>
-              <td>{{ electoralProcess.schoolId }}</td>
-              <td>
-                <button class="btn btn-danger" (click)="deleteProcess(i)">Eliminar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+<div class="main">
+  <section>
+    <div class="container mt-4">
+      <div class="card p-4">
+        <h2 class="card-title">Agregar Proceso Electoral</h2>
+        <form (ngSubmit)="addElectoralProcesses()" class="needs-validation">
+          <div class="mb-3">
+            <input type="text" [(ngModel)]="newElectoralProcess.title" name="title" class="form-control" id="title" placeholder="Title" required>
+          </div>
+          <div class="mb-3">
+            <label for="startDate" class="form-label">Start date and time:</label>
+            <input type="datetime-local" [(ngModel)]="newElectoralProcess.startDate" name="startDate" class="form-control" id="startDate" required>
+          </div>
+          <div class="mb-3">
+            <label for="endDate" class="form-label">end date and time:</label>
+            <input type="datetime-local" [(ngModel)]="newElectoralProcess.endDate" name="endDate" class="form-control" id="endDate" required>
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Estatus:</label>
+            <select class="form-select" [(ngModel)]="newElectoralProcess.status" name="status" id="status" required>
+              <option value=1>Activo</option>
+              <option value=2>Pendiente</option>
+              <option value=3>Desactivado</option>
+            </select>
+          </div>
+          
+         
+          <div class="mb-3">
+            <input type="text" [value]="school.name" readonly >
+          </div>
+  
+  
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
       </div>
-
+  
+      <div class="card p-4 mt-4 list-card">
+        <h2 class="card-title mt-5">List of Electoral Processes</h2>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Start date</th>
+                <th>End Date</th>
+                <th>status</th>
+                <th>SchoolId</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let electoralProcess of electoralProcessList; let i = index">
+                <td>{{ electoralProcess.title}}</td>
+                <td>{{ electoralProcess.startDate }}</td>
+                <td>{{ electoralProcess.endDate }}</td>
+                <td>{{ electoralProcess.status }}</td>
+                <td>{{ electoralProcess.schoolId }}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="deleteProcess(i)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+
 
   

@@ -1,0 +1,12 @@
+body {
+    background: rgba(255, 196, 125, 0.7);
+    background-image: url('./assets/images/votechain_logo_home.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+}
+  
+.main {
+    padding-top: 80px;
+    height: 100vh; /* Used in this example to enable scrolling */
+}

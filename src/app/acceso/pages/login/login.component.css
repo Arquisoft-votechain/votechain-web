@@ -1,8 +1,21 @@
 .gradient-background {
-  background: linear-gradient(141.69deg, #0B9BF5 29.69%, #1B2AC2 100%);
+  background: linear-gradient(90deg, rgba(11,155,245,1) 0%, rgba(244,91,105,1) 35%, rgba(255, 196, 125,1) 100%);
 }
 
 .logo-text {
   width: 350px;
 }
 
+.container-color {
+  background: rgba(255, 196, 125, 1);
+  height: 100vh;
+  width: 100%;
+
+  .label {
+    color: rgb(83, 82, 82);
+  }
+
+  .h1 {
+    color: rgb(83, 82, 82);
+  }
+}
