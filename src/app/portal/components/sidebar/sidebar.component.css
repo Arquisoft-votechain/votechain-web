@@ -1,15 +1,14 @@
 
 /* topnav css  */
 .topnav {
-    width: 100%;
-    position: fixed;
-    top:0;
-    left: 0;
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(11,155,245,1) 0%, rgba(244,91,105,1) 35%, rgba(246,148,71,1) 100%);
-    color: white;
-    border-bottom: 0px solid rgb(128, 128, 128);
-    z-index: 9999;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(255, 196, 125, 0.9) 40%, rgba(244,91,105,1) 90%);
+    color: rgb(83, 82, 82);
+    z-index: 999;
+    padding: 10px;
 }
 
 .topnav a {
@@ -38,23 +37,22 @@
 .sidebar {
     position: fixed;
     overflow: auto;   
-    top: 62px;     
-    background: linear-gradient(90deg, rgba(11,155,245,1) 40%, rgba(244,91,105,1) 90%);
-
-    color: white;
+    top: 75px;    
+    left: 0px; 
+    background: rgba(255, 196, 125,0.95);
+    color: rgb(83, 82, 82);
     font-weight: bolder;
     height: 100%;
-    border-right: 0px solid rgb(128, 128, 128);
     padding: 30px 5px;
     margin: 0px;
     width: 350px;
-    z-index: 999;
+    z-index: 9999;
 }
 
 .sidebar a {
     text-decoration: none;
-    padding: 10px 10px;
-    color: white;
+    padding: 10px 0px 10px 20px;
+    color: rgb(83, 82, 82);
     text-align: left;
     display: block;
 }
@@ -82,19 +80,10 @@ ul{
     padding: 0px;
 }
 ul>li>a.active{
-    color: #000;
+    color: rgb(83, 82, 82);
 }
 
 /* left sidebar nav  */
-
-/* main-content */
-.main-content {
-    margin-left:230px;
-    margin-top: 100px;
-    padding: 10px 18px;
-    transition: margin-left .5s;
-}
-/* main-content */
 
 
 
@@ -107,9 +96,6 @@ ul>li>a.active{
     .sidebar{
         display: none;
         width: 230px;
-    }
-    .sidebar a{
-        padding: 10px 0px;
     }
     .main-content
     {
