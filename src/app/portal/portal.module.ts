@@ -17,6 +17,8 @@ import { ElectoralProcessStudentComponent } from './pages/electoral-process-stud
 import { ElectoralProcess } from '../services/electoralProcess.service';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { StatisticsService } from '../services/statistics.service';
+import { IconsModule } from '../icons/icons.module';
+import { AddStudentPartyPoliticComponent } from './pages/add-student-party-politic/add-student-party-politic.component';
 
 
 
@@ -30,13 +32,15 @@ import { StatisticsService } from '../services/statistics.service';
     SidebarComponent,
     DashboardComponent,
     ElectoralProcessStudentComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    AddStudentPartyPoliticComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     PortalRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IconsModule,
   ],
   providers: [
     SchoolService,
