@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ElectoralProcess {
-  private apiUrl = `${environment.apiUrl}/electoral-processes`;
+  private apiUrl = `${environment.apiUrl}electoral-processes`;
 
   constructor(private http: HttpClient) { }
  
@@ -19,7 +19,10 @@ export class ElectoralProcess {
     return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
   }
  
-  
+  getPoliticalPartyParticipantVotesByElectoralProcessId(electoralProcessId: number) {
+    const url = `${this.apiUrl}/${electoralProcessId}/political-party-participants/votes`;
+    return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
+  }
 
 
 }

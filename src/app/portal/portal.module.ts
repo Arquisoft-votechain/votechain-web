@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortalRoutingModule } from './portal-routing.module';
 import { SchoolService } from '../services/school.service';
@@ -47,7 +47,8 @@ import { AddStudentPartyPoliticComponent } from './pages/add-student-party-polit
     StudentService,
     UserService,
     ElectoralProcess,
-    StatisticsService
+    StatisticsService,
+    DatePipe
   ]
 })
 export class PortalModule { }

@@ -38,4 +38,8 @@ export class SchoolService {
     return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
   }
 
+  getElectoralProcessCountVotesBySchoolId(schoolId:number){
+    const url = `${this.apiUrl}/${schoolId}/electoral-processes/votes`;
+    return this.http.get<any[]>(url); // Realiza la solicitud HTTP y devuelve el resultado
+  }
 }
