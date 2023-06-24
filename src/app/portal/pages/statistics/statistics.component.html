@@ -1,0 +1,43 @@
+<header>
+    <app-sidebar/>
+  </header>
+  <section class="container mt-4">
+    <div class="card p-4 mt-4">
+      <h5 class="card-title">Conteo de Procesos Electorales</h5>
+     
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Estado</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Finalización</th>
+          <th>Votos</th>
+          <th>Grafico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let electoralProcess of electoralProcessCountVotes" >
+          <td>{{electoralProcess.title}}</td>
+          <td>{{electoralProcess.status}}</td>
+          <td>{{electoralProcess.start_date}}</td>
+          <td>{{electoralProcess.votes}}</td>
+          <td>{{electoralProcess.end_date}}</td>
+          <td>
+            <button type="button" class="btn btn-primary"
+            [disabled]="electoralProcess.status == 'Desconocido' || electoralProcess.votes == 0"
+            (click)="this.getCountVotesByElectoralProcess(electoralProcess.title, electoralProcess.id)">
+              Ver Gráfico
+            </button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf='this.flagChart' class="card p-4 mt-4">
+    <canvas  id="canvas" style="width: 500px">
+      {{chart}}
+    </canvas>
+  </div>
+  </section>

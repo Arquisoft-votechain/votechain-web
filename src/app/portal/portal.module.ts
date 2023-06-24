@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortalRoutingModule } from './portal-routing.module';
 import { SchoolService } from '../services/school.service';
@@ -15,6 +15,8 @@ import { UserService } from '../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ElectoralProcessStudentComponent } from './pages/electoral-process-student/electoral-process-student.component';
 import { ElectoralProcess } from '../services/electoralProcess.service';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { StatisticsService } from '../services/statistics.service';
 import { IconsModule } from '../icons/icons.module';
 import { AddStudentPartyPoliticComponent } from './pages/add-student-party-politic/add-student-party-politic.component';
 
@@ -30,6 +32,7 @@ import { AddStudentPartyPoliticComponent } from './pages/add-student-party-polit
     SidebarComponent,
     DashboardComponent,
     ElectoralProcessStudentComponent,
+    StatisticsComponent,
     AddStudentPartyPoliticComponent
   ],
   imports: [
@@ -43,7 +46,9 @@ import { AddStudentPartyPoliticComponent } from './pages/add-student-party-polit
     SchoolService,
     StudentService,
     UserService,
-    ElectoralProcess
+    ElectoralProcess,
+    StatisticsService,
+    DatePipe
   ]
 })
 export class PortalModule { }
