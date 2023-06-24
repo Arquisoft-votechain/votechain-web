@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { School } from 'src/app/models/school.model';
 import { SchoolService } from 'src/app/services/school.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-electoral-process-crud',
@@ -17,17 +18,20 @@ export class ElectoralProcessCRUDComponent implements OnInit {
   };
   school:School=new School();
   electoralProcessList:any[]=[];
+  sessionSchool:any;
 
  
  
 
-  constructor(private schoolService: SchoolService
+  constructor(private schoolService: SchoolService,
+    private storageService:StorageService
 
   ) { }
 
   ngOnInit() {
-    this.getSchoolById(2);
-    this.showElectoralProcessBySchool(2);
+    this.sessionSchool=this.storageService.getSchool();
+    this.getSchoolById(this.sessionSchool.id);
+    this.showElectoralProcessBySchool(this.sessionSchool.id);
   }
   getSchoolById(schoolId: number) {
     this.schoolService.getSchoolById(schoolId).subscribe({

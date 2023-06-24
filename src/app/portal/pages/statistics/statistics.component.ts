@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { ElectoralProcess } from 'src/app/services/electoralProcess.service';
 import { SchoolService } from 'src/app/services/school.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-statistics',
@@ -10,6 +11,8 @@ import { SchoolService } from 'src/app/services/school.service';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent {
+  
+  
 
 
   ESTADO_PROCESO: { [key: string]: string } = {
@@ -21,7 +24,7 @@ export class StatisticsComponent {
 
   chart: any = '';
   listPoliticalParties:any[] = [];
-  testSchoolId: number = 2;
+  testSchoolId: any;
   data: any;
   electoralProcessCountVotes: any[] = [];
   chartColors:any = [];
@@ -29,11 +32,12 @@ export class StatisticsComponent {
   flagChart: boolean = false;
   constructor(private schoolService: SchoolService, 
     private electoralProcessService: ElectoralProcess,
-    private datePipe: DatePipe){}
+    private datePipe: DatePipe,private storageService:StorageService){}
 
   ngOnInit(){
     Chart.register(...registerables);
-    this.getElectoralProcessCountVotesBySchoolId(this.testSchoolId);
+    this.testSchoolId=this.storageService.getSchool();
+    this.getElectoralProcessCountVotesBySchoolId(this.testSchoolId.id);
     //this.getChart();
   }
 
@@ -79,7 +83,7 @@ async generateChart(title: string){
 
 async getPoliticPartiesBySchoolId() {
   //TODO la escuela id debe definirse
-  await this.schoolService.getPoliticalParties(this.testSchoolId).subscribe({
+  await this.schoolService.getPoliticalParties(this.testSchoolId.id).subscribe({
     next: (response: any[]) => {
       this.listPoliticalParties = response;
     },

@@ -19,6 +19,7 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { StatisticsService } from '../services/statistics.service';
 import { IconsModule } from '../icons/icons.module';
 import { AddStudentPartyPoliticComponent } from './pages/add-student-party-politic/add-student-party-politic.component';
+import { StorageService } from '../services/storage.service';
 
 
 
@@ -48,7 +49,8 @@ import { AddStudentPartyPoliticComponent } from './pages/add-student-party-polit
     UserService,
     ElectoralProcess,
     StatisticsService,
-    DatePipe
+    DatePipe,
+    StorageService
   ]
 })
 export class PortalModule { }

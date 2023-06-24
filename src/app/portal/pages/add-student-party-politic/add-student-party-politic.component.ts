@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { PoliticalPartyParticipantService } from 'src/app/services/political-party-participant-service';
+import { PoliticalPartyParticipantService } from 'src/app/services/political-party-participant.service';
 import { SchoolService } from 'src/app/services/school.service';
 import { StudentService } from 'src/app/services/student.service';
 

@@ -3,6 +3,7 @@ import { SchoolService } from 'src/app/services/school.service';
 import { UserService } from 'src/app/services/user.service';
 import { StudentService } from 'src/app/services/student.service';
 import { School } from 'src/app/models/school.model';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-student-crud',
@@ -30,16 +31,19 @@ export class StudentCRUDComponent implements OnInit {
   
   selectedClassrooms: number = 0;
   classroomsBySchool: any[] = [];
+  sessionSchool:any;
   
   constructor(private schoolService: SchoolService, 
               private userService: UserService,
-              private studentService:StudentService
+              private studentService:StudentService,
+              private storageService:StorageService
               ) { }
 
 
   ngOnInit() {
-    this.getClassroomsBySchool(2);
-    this.getSchoolById(2);
+    this.sessionSchool=this.storageService.getSchool();
+    this.getClassroomsBySchool(this.sessionSchool.id);
+    this.getSchoolById(this.sessionSchool.id);
     
   }
 

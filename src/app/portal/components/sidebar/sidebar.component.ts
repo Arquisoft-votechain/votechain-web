@@ -1,11 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
+  school:any;
+  admi:any;
+  showAdmi:any;
+  constructor(
+    private sessionStorage:StorageService
+    
+    ) { }
+  ngOnInit(): void {
+  this.school=this.sessionStorage.getSchool();
+  this.admi=this.sessionStorage.getAdministrator();
+  
+  if (this.school && this.admi) {
+    this.showAdmi = "ADMINISTRATOR: " + this.admi.name + " " + this.admi.lastName + "//SCHOOL: " + this.school.name;
+  } else {
+    // Manejo del caso en que school o admi sean null
+    this.showAdmi = "ADMINISTRATOR: No disponible // SCHOOL: No disponible";
+  }
+
+  
+  }
+
   responsiveMenu: any;
   responsiveContent: any;
   isDropdownOpen1 = false;

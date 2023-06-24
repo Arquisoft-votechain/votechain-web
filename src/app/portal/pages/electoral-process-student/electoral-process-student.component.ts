@@ -5,6 +5,7 @@ import { School } from 'src/app/models/school.model';
 import { ElectoralProcess } from 'src/app/services/electoralProcess.service';
 import { SchoolService } from 'src/app/services/school.service';
 import { StudentService } from 'src/app/services/student.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class ElectoralProcessStudentComponent implements OnInit {
 
   selectedClassrooms: number = 0;
   classroomsBySchool: any[] = [];
+  sessionSchool:any;
 
  
  
@@ -36,14 +38,17 @@ export class ElectoralProcessStudentComponent implements OnInit {
   constructor(
     private schoolService: SchoolService,
     private studentService:StudentService,
-    private electoralProcess:ElectoralProcess
+    private electoralProcess:ElectoralProcess,
+    private storageService:StorageService
 
   ) { }
 
   ngOnInit() {
-    this.showLabelSchoolById(2);
-    this.showComboClassrromsBySchool(2);
-    this.showComboElectoralProcess(2);
+
+    this.sessionSchool=this.storageService.getSchool();
+    this.showLabelSchoolById(this.sessionSchool.id);
+    this.showComboClassrromsBySchool(this.sessionSchool.id);
+    this.showComboElectoralProcess(this.sessionSchool.id);
   }
   showLabelSchoolById(schoolId:number){
     this.getSchoolById(schoolId);
