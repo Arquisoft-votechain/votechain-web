@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { PoliticalPartyParticipantService } from 'src/app/services/political-party-participant.service';
 import { SchoolService } from 'src/app/services/school.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AddStudentPartyPoliticComponent implements OnInit {
 
   @Input() politicParty?: any;
   students: any[] = [];
-  
+  sessionSchool:any;
   selectedClassrooms: number = 0;
   classroomsBySchool: any[] = [];
 
@@ -20,10 +21,12 @@ export class AddStudentPartyPoliticComponent implements OnInit {
     private schoolService: SchoolService, 
     private studentService:StudentService,
     private politicalPartyParticipantService: PoliticalPartyParticipantService,
+    private storageService:StorageService
   ) { }
 
   ngOnInit() { 
-    this.getClassroomsBySchool(2);
+    this.sessionSchool=this.storageService.getSchool();
+    this.getClassroomsBySchool(this.sessionSchool.id);
    }
   
   getClassroomsBySchool(schoolId: number) {

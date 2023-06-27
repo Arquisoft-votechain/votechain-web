@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from 'src/app/services/school.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-politic-party',
@@ -10,6 +11,7 @@ export class PoliticPartyComponent implements OnInit {
   listPoliticParties: any[] = [];
   listaPropuestas: String[] = [];
   propuesta: String = "";
+  sessionSchool:any;
 
   politicParty: any = {
     name: '',
@@ -22,15 +24,16 @@ export class PoliticPartyComponent implements OnInit {
     description: '',
     proposes: []
   };
-  constructor(private schoolService: SchoolService) { }
+  constructor(private schoolService: SchoolService, private storageService:StorageService) { }
 
   ngOnInit() {
     this.getPoliticParties();
   }
 
   getPoliticParties() {
+    this.sessionSchool=this.storageService.getSchool();
     //TODO la escuela id debe definirse
-    this.schoolService.getPoliticalParties(1).subscribe({
+    this.schoolService.getPoliticalParties(this.sessionSchool.id).subscribe({
       next: (response: any[]) => {
         this.listPoliticParties = response;
       },
@@ -56,9 +59,9 @@ export class PoliticPartyComponent implements OnInit {
 
   postPoliticParty() {
     this.politicParty.proposes = this.listaPropuestas;
-    this.schoolService.postPoliticalParties(1, this.politicParty).subscribe({
+    this.schoolService.postPoliticalParties(this.sessionSchool.id, this.politicParty).subscribe({
       next: (response: any[]) => {
-        console.log("respuesta " + response);
+        console.log("respuesta " + response.toString());
       },
       error: (error: any) => {
         console.log('Error al crear un politic party:', error);
