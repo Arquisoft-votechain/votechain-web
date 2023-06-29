@@ -21,8 +21,9 @@
           <td>{{electoralProcess.title}}</td>
           <td>{{electoralProcess.status}}</td>
           <td>{{electoralProcess.start_date}}</td>
-          <td>{{electoralProcess.votes}}</td>
           <td>{{electoralProcess.end_date}}</td>
+          <td>{{electoralProcess.votes}}</td>
+          
           <td>
             <button type="button" class="btn btn-primary"
             [disabled]="electoralProcess.status == 'Desconocido' || electoralProcess.votes == 0"
