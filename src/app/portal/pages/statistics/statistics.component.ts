@@ -122,7 +122,7 @@ async getCountVotesByElectoralProcess(title: string, electoralId: number){
     next: (response: any[]) => {
       this.countVotes = response;
       this.labelsChart = this.countVotes.map(vote => vote.master_political_party.name);
-      this.dataChart = this.countVotes.map(vote => vote.votes+5);
+      this.dataChart = this.countVotes.map(vote => vote.votes);
       console.log(this.countVotes)
       console.log(this.labelsChart);
       console.log(this.dataChart);
