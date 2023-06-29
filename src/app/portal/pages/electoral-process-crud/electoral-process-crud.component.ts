@@ -79,8 +79,8 @@ export class ElectoralProcessCRUDComponent implements OnInit {
 
     this.electoralProcess.push({
       title:this.newElectoralProcess.title,
-      startDate: startDateISO,
-      endDate: endDateISO,
+      start_date: startDateISO,
+      end_date: endDateISO,
       status:parseInt(this.newElectoralProcess.status),
       schoolId:this.school.id
     });
