@@ -8,32 +8,31 @@
 <!-- left sidebar nav  -->
 <div class="sidebar shadow p-2" [ngStyle]="responsiveMenu">
     <ul>
-      <li><a routerLink="/portal/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
       <li><a routerLink="/portal/statistics"><i class="bi bi-card-text"></i> Estadisticas</a></li>
 
       <li>
-        <a (click)="toggleDropdown3($event)"><i class="bi bi-bag"></i> Student <i class="bi bi-arrow-right icon" ></i></a>
+        <a (click)="toggleDropdown3($event)"><i class="bi bi-person-gear"></i> Student <i class="bi bi-arrow-right icon" ></i></a>
         <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen3}">
           
-          <li><a routerLink="/portal/student" class="fw-normal"><i class="bi bi-person-gear"></i>Estudiantes</a></li>
+          <li><a routerLink="/portal/student" class="fw-normal"><i class="bi bi-person-plus"></i>Estudiantes</a></li>
           
         </ul>
       </li>
 
       <li>
-        <a (click)="toggleDropdown2($event)"><i class="bi bi-bag"></i> Politic Party <i class="bi bi-arrow-right icon"></i></a>
+        <a (click)="toggleDropdown2($event)"><i class="bi bi-flag"></i> Politic Party <i class="bi bi-arrow-right icon"></i></a>
         <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen2}">
           
-          <li><a routerLink="/portal/politic-party" class="fw-normal">New Politic Party</a></li>
+          <li><a routerLink="/portal/politic-party" class="fw-normal"><i class="bi bi-flag"></i>New Politic Party</a></li>
         </ul>
       </li>
       
       <li>
-        <a (click)="toggleDropdown1($event)"><i class="bi bi-bag"></i> Electoral Process <i class="bi bi-arrow-right icon"></i></a>
+        <a (click)="toggleDropdown1($event)"><i class="bi bi-file-earmark-bar-graph"></i> Electoral Process <i class="bi bi-arrow-right icon"></i></a>
         <ul class="dropdow-container" [ngClass]="{'show': isDropdownOpen1}">
-          <li><a routerLink="/portal/electoral-process" class="fw-normal">New Electoral Process</a></li>
-          <li><a routerLink="/portal/electoral-process-student" class="fw-normal">Electoral Process-student</a></li>
-          <li><a routerLink="/portal/electoral-process-party" class="fw-normal">Electoral Process-Politic Party</a></li>
+          <li><a routerLink="/portal/electoral-process" class="fw-normal"><i class="bi bi-file-earmark-bar-graph"></i>New Electoral Process</a></li>
+          <li><a routerLink="/portal/electoral-process-student" class="fw-normal"><i class="bi bi-file-earmark-bar-graph"></i>Electoral Process-student</a></li>
+          <li><a routerLink="/portal/electoral-process-party" class="fw-normal"><i class="bi bi-file-earmark-bar-graph"></i>Electoral Process-Politic Party</a></li>
           
         </ul>
       </li>
