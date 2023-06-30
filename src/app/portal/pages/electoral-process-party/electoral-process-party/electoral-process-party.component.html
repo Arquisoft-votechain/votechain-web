@@ -1,0 +1,79 @@
+<app-sidebar/>
+  
+<div class="main">
+  <section>
+    <div class="container mt-4">
+      <div class="card p-4">
+        <h2 class="card-title">Associate Politic party to electoral process</h2>
+        <form (ngSubmit)="addElectoralProcessStudentRelation()"  class="needs-validation">
+         
+            <div class="mb-3">
+                <input type="text" [value]="school.name" readonly >
+              </div>
+      
+
+          <div class="mb-3">
+            <label for="electoralProcess" class="form-label">Electoral Process:</label>
+            <select [(ngModel)]="selectedElectoralProcess" name="electoralProcess" class="form-control" (change)="showPoliticPartiesTableByElectoralProcessId()" required>
+                <option value="">Select a Electoral Process</option>
+                <option *ngFor="let electoralProcess of electoralProcessBySchool" [value]="electoralProcess.id">{{ electoralProcess.title }}</option>
+              </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="politicParty" class="form-label">Politic Party:</label>
+            <select [(ngModel)]="selectedPoliticParty" name="politicParty" class="form-control" required>
+                <option value="">Select a Politic Party</option>
+                <option *ngFor="let politicParty of politicPartiesBySchool" [value]="politicParty.id">{{ politicParty.name }}</option>
+              </select>
+          </div>
+
+        
+          
+
+
+
+
+
+          
+         
+         
+  
+  
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+  
+      <div class="card mt-4">
+        <h2>Politic Party List by Electoral Process</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Proposes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let politicParty of politicPartiesElectoralProcessTable; let i = index">
+
+              <td>{{ politicParty.id }}</td>
+              <td>{{ politicParty.name }}</td>
+              <td>{{ politicParty.description }}</td>
+              <td>{{ politicParty.proposes }}</td>
+            
+             
+            </tr>
+          </tbody>
+        </table>
+    
+        
+      </div>
+
+      
+    </div>
+  </section>
+</div>
+  
+    

@@ -196,11 +196,5 @@ export class ElectoralProcessStudentComponent implements OnInit {
     });
   }
   
-    
-    
-  
-  
-
-
   
 }

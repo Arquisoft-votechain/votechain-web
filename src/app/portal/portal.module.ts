@@ -20,6 +20,7 @@ import { StatisticsService } from '../services/statistics.service';
 import { IconsModule } from '../icons/icons.module';
 import { AddStudentPartyPoliticComponent } from './pages/add-student-party-politic/add-student-party-politic.component';
 import { StorageService } from '../services/storage.service';
+import { ElectoralProcessPartyComponent } from './pages/electoral-process-party/electoral-process-party/electoral-process-party.component';
 
 
 
@@ -34,7 +35,8 @@ import { StorageService } from '../services/storage.service';
     DashboardComponent,
     ElectoralProcessStudentComponent,
     StatisticsComponent,
-    AddStudentPartyPoliticComponent
+    AddStudentPartyPoliticComponent,
+    ElectoralProcessPartyComponent
   ],
   imports: [
     CommonModule,
