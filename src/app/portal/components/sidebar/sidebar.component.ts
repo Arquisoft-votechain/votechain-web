@@ -10,6 +10,8 @@ export class SidebarComponent implements OnInit{
   school:any;
   admi:any;
   showAdmi:any;
+  showSchool:any;
+
   constructor(
     private sessionStorage:StorageService
     
@@ -19,7 +21,8 @@ export class SidebarComponent implements OnInit{
   this.admi=this.sessionStorage.getAdministrator();
   
   if (this.school && this.admi) {
-    this.showAdmi = "ADMINISTRATOR: " + this.admi.name + " " + this.admi.lastName + "//SCHOOL: " + this.school.name;
+    this.showAdmi =  this.admi.name + " " + this.admi.lastName ;
+    this.showSchool=this.school.name;
   } else {
     // Manejo del caso en que school o admi sean null
     this.showAdmi = "ADMINISTRATOR: No disponible // SCHOOL: No disponible";
