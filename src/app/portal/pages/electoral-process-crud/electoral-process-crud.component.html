@@ -18,6 +18,9 @@
             <input type="datetime-local" [(ngModel)]="newElectoralProcess.endDate" name="endDate" class="form-control" id="endDate" required>
           </div>
           <div class="mb-3">
+            <input type="text" [(ngModel)]="newElectoralProcess.smartContractAddress" name="SmartContractAddress" class="form-control" id="smartContractAddress" placeholder="Smart Contract Address" required>
+          </div>
+          <div class="mb-3">
             <label for="status" class="form-label">Estatus:</label>
             <select class="form-select" [(ngModel)]="newElectoralProcess.status" name="status" id="status" required>
               <option value=1>Activo</option>

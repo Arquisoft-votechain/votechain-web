@@ -14,7 +14,8 @@ export class ElectoralProcessCRUDComponent implements OnInit {
     title:'',
     startDate:'',
     endDate:'',
-    status:''
+    status:'',
+    smartContractAddress:'',
   };
   school:School=new School();
   electoralProcessList:any[]=[];
