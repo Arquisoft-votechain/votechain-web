@@ -15,7 +15,8 @@ export class ElectoralProcessCRUDComponent implements OnInit {
     startDate:'',
     endDate:'',
     status:'',
-    smartContractAddress:'',
+    smartContractAddress:''
+
   };
   school:School=new School();
   electoralProcessList:any[]=[];
@@ -83,7 +84,9 @@ export class ElectoralProcessCRUDComponent implements OnInit {
       start_date: startDateISO,
       end_date: endDateISO,
       status:parseInt(this.newElectoralProcess.status),
-      schoolId:this.school.id
+      schoolId:this.school.id,
+      smartContractAddress:this.newElectoralProcess.smartContractAddress
+
     });
     console.log("electoralProcess",this.electoralProcess[0]);
     if(this.school.id!=0){
